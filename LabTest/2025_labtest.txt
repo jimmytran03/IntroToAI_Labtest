@@ -1,7 +1,7 @@
 % Lab test 21-Nov-2025
 
 % Q0 mandatoty name and student id
-student(JimmyTran, C22733065).
+student().
 
 % Q1  	(15 marks)
 % is_a(A,B), has_fur(X)
@@ -125,5 +125,6 @@ fromto(A, B) :- donkey(A, C, _), fromto(C, B).
 fromTo(A, B, [bicycle(A,B)], D) :- bicycle(A, B, D).
 fromTo(A, B, [scooter(A,B)], D) :- scooter(A, B, D).
 fromTo(A, B, [donkey(A,B)], D) :- donkey(A, B, D).
+
 
 
