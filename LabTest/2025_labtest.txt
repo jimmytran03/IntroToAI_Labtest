@@ -1,0 +1,129 @@
+% Lab test 21-Nov-2025
+
+% Q0 mandatoty name and student id
+student(JimmyTran, C22733065).
+
+% Q1  	(15 marks)
+% is_a(A,B), has_fur(X)
+
+is_a(fish, animal).
+is_a(mammal,animal).
+is_a(whale, mammal).
+is_a(felidae, mammal).
+is_a(bear, mammal).
+is_a(felinae, felidae).
+is_a(cat, felinae).
+is_a(lion, pantherinae).
+
+has(mammal, vertebra).
+has(felidae, fur).
+has(bear, fur).
+
+isa(X, Y) :- isa(X, Y).
+isa(X, Y) :- is_a(X, Z), isa(Z, Y).
+
+has_fur(X) :- has(X, fur).
+has_fur(X) :- isa(X, Z), has(Z, fur).
+
+% has_fur(lion).
+% true .
+
+% has_fur(cat).
+% true .
+
+% has_fur(bear).
+% true .
+
+% Q2
+% replaceOdds(L1, L2)
+
+replaceOdds([], []).
+replaceOdds([H|T], [odd|T2]) :-
+
+
+% Q3
+% dupList(L1, L2)
+
+dupList([], []).
+dupList([H|T], [H, H | T2]) :- dupList(T, T2).
+
+
+bicycle(dublin, kilkenny, 121).
+bicycle(dublin, carlow, 80).
+bicycle(kilkenny, waterford, 86).
+bicycle(mallow, carlow, 110).
+bicycle(cork, mallow, 38).
+bicycle(waterford, youghal, 110).
+bicycle(youghal, cork, 30).
+biDist is D1+D2.cycle(dublin, athlone, 105).
+bicycle(athlone, limerick, 135).
+bicycle(limerick, cork, 75).
+
+scooter(dublin, galway, 200).
+scooter(galway, limerick, 110).
+scooter(limerick, ennis, 30).
+scooter(limerick, cork, 95).
+
+donkey(dublin, galway, 210).
+donkey(tokyo, osaka, 250).
+donkey(cork, moon, 250000).
+donkey(mallow, carlow, 105).
+
+% Q4    (5 marks)
+% Nov 2025
+% fromTo(A,B)
+
+fromTo(A, B) :- bicycle(A, B, _).
+fromTo(A, B) :- scooter(A, B, _).
+fromTo(A, B) :- donkey(A, B, _).
+
+fromto(A, B) :- bicycle(A, C, _), fromto(C, B).
+fromto(A, B) :- scooter(A, C, _), fromto(C, B).
+fromto(A, B) :- donkey(A, C, _), fromto(C, B).
+
+% ?- fromTo(Limerick, Carlow).
+% Limerick = dublin,
+% Carlow = kilkenny ;
+% Limerick = dublin,
+% Carlow = carlow ;
+% Limerick = kilkenny,
+% Carlow = waterford ;
+% Limerick = mallow,
+% Carlow = carlow ;
+% Limerick = cork,
+% Carlow = mallow ;
+% Limerick = waterford,
+% Carlow = youghal ;
+% Limerick = youghal,
+% Carlow = cork ;
+% Limerick = athlone,
+% Carlow = limerick ;
+% Limerick = limerick,
+% Carlow = cork ;
+% Limerick = dublin,
+% Carlow = galway ;
+% Limerick = galway,
+% Carlow = limerick ;
+% Limerick = limerick,
+% Carlow = ennis ;
+% Limerick = limerick,
+% Carlow = cork ;
+% Limerick = dublin,
+% Carlow = galway ;
+% Limerick = tokyo,
+% Carlow = osaka ;
+% Limerick = cork,
+% Carlow = moon ;
+% Limerick = mallow,
+% Carlow = carlow.
+
+% 16 ways
+
+% Q5   (20 marks)
+% fromTo(A,B,Route,Dist)
+
+fromTo(A, B, [bicycle(A,B)], D) :- bicycle(A, B, D).
+fromTo(A, B, [scooter(A,B)], D) :- scooter(A, B, D).
+fromTo(A, B, [donkey(A,B)], D) :- donkey(A, B, D).
+
+
